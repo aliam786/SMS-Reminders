@@ -1,3 +1,3 @@
-# SMS-FP
+# SMS-Reminders
 
-An appointment reminder webapp
+An appointment reminder service built with Django.
