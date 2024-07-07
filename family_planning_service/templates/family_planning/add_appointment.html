@@ -1,0 +1,23 @@
+
+<!--templates/family_planning/add_appointment.html-->
+
+{% extends "base.html" %}
+
+{% block title %}Add Appointment{% endblock %}
+
+{% block content %}
+<h1>Add Appointment</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="patient_name">Patient Name:</label>
+    <input type="text" name="patient_name" id="patient_name" required><br>
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" name="phone_number" id="phone_number" required><br>
+    <label for="appointment_date">Appointment Date:</label>
+    <input type="datetime-local" name="appointment_date" id="appointment_date" required><br>
+    <label for="notes">Notes:</label>
+    <textarea name="notes" id="notes"></textarea><br>
+    <button type="submit">Add Appointment</button>
+</form>
+<a href="{% url 'appointment_list' %}">Back to Appointment List</a>
+{% endblock %}
