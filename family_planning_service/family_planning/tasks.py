@@ -1,5 +1,5 @@
 # family_planning/tasks.py
-from celery import shared_task
+#from celery import shared_task
 from twilio.rest import Client
 from django.utils import timezone
 from .models import Appointment
@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import os
 
 
-@shared_task
+#@shared_task
 def check_and_send_sms():
     now = datetime.now()
     # Logic to fetch appointments: Get all appointments that are scheduled for tomorrow
