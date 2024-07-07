@@ -28,14 +28,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f&$#_vzrw=oo1gi45-8&ttt=vakv6i60z^gmz16++7xpg6s*p3'
+SECRET_KEY = SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['alimobeen.pythonanywhere.com']
 
-#SITE_ID = 2
+SITE_ID = 1
 
 # Application definition
 
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'django.contrib.sites',
+    'django.contrib.sites',
     'rapidsms',
     'rapidsms.backends.database',
     'rapidsms.contrib.default',
@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'family_planning_service.urls'
-
+STATIC_ROOT = 'static/'
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
