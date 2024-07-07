@@ -2,14 +2,17 @@
 #from celery import shared_task
 from twilio.rest import Client
 from django.utils import timezone
-from .models import Appointment
+from models.py import Appointment
 from datetime import datetime, timedelta
 import os
+from twilio.http.http_client import TwilioHttpClient
 
+#proxy to make twillo work
+proxy_client = TwilioHttpClient(proxy={'http': os.environ['http_proxy'], 'https': os.environ['https_proxy']})
 
 #@shared_task
 def check_and_send_sms():
-    now = datetime.now()
+#    now = datetime.now()
     # Logic to fetch appointments: Get all appointments that are scheduled for tomorrow
     appointments = Appointment.objects.filter(appointment_date__lte=timezone.now() + timedelta(days=1))
     for appointment in appointments:
@@ -28,7 +31,7 @@ def send_sms(appointment):
     # Twilio setup
     account_sid = os.getenv("TWILIO_ACCOUNT_SID")
     auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-    client = Client(account_sid, auth_token)
+    client = Client(account_sid, auth_token, http_client=proxy_client)
 
     message = client.messages.create(
         body = f"Mpore Clinic: Hello {appointment.patient_name}, this is a reminder for your appointment on {appointment.appointment_date}" + (appointment.notes if appointment.notes else "."),
@@ -39,3 +42,4 @@ def send_sms(appointment):
     appointment.delete()
     print('Appointment deleted')
 
+check_and_send_sms()
