@@ -67,6 +67,7 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+
 # Scrapy stuff:
 .scrapy
 
@@ -132,3 +133,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# macos
+.DS_Store
+
