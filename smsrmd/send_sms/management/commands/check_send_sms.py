@@ -1,11 +1,11 @@
 #imports
 from twilio.rest import Client
 from django.utils import timezone
-from family_planning.models import Appointment
+from send_sms.models import Appointment
 from datetime import datetime, timedelta
 import os
 from twilio.http.http_client import TwilioHttpClient
-from family_planning.models import Appointment
+from send_sms.models import Appointment
 from django.core.management.base import BaseCommand, CommandError
 
 

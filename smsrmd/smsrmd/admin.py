@@ -1,5 +1,5 @@
 from django.contrib import admin
-from family_planning.models import FamilyPlanningInfo 
+from send_sms.models import FamilyPlanningInfo 
 # Register your models here.
 
   # Import your models here

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('family_planning', '0001_initial'),
+        ('send_sms', '0001_initial'),
     ]
 
     operations = [

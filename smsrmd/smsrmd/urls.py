@@ -1,5 +1,5 @@
 """
-URL configuration for family_planning_service project.
+URL configuration for smsrmd project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -17,13 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from family_planning import views as fp_views
+from send_sms import views as sms_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('family_planning/', include('family_planning.urls')),
-    path('', fp_views.home, name='home'),
+    path('send_sms/', include('send_sms.urls')),
+    path('', sms_views.home, name='home'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 ]

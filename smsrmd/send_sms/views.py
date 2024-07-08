@@ -7,7 +7,7 @@ from django.utils import timezone
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(appointment_date__gte=timezone.now())
-    return render(request, 'family_planning/appointment_list.html', {'appointments': appointments})
+    return render(request, 'send_sms/appointment_list.html', {'appointments': appointments})
 
 @login_required
 def add_appointment(request):
@@ -23,7 +23,7 @@ def add_appointment(request):
             notes=notes
         )
         return redirect('appointment_list')
-    return render(request, 'family_planning/add_appointment.html')
+    return render(request, 'send_sms/add_appointment.html')
 
 
 def home(request):

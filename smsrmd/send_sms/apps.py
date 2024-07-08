@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
-class FamilyPlanningConfig(AppConfig):
+class send_smsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'family_planning'
+    name = 'send_sms'

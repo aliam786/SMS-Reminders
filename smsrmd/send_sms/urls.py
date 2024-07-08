@@ -1,4 +1,4 @@
-# family_planning/urls.py
+# send_sms/models.py
 from django.urls import path
 from . import views
 
