@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Clinic Management{% endblock %}</title>
+    <title>{% block title %}Appointment Management{% endblock %}</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -10,8 +10,6 @@
     <div class="container text-center"> <!-- Add this line -->
         {% if user.is_authenticated %}
             <p>Welcome, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
-        {% else %}
-            <p><a href="{% url 'login' %}">Login</a></p>
         {% endif %}
         {% block content %}{% endblock %}
     </div> <!-- And this line -->

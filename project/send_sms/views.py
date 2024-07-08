@@ -12,12 +12,14 @@ def appointment_list(request):
 @login_required
 def add_appointment(request):
     if request.method == "POST":
-        patient_name = request.POST.get('patient_name')
+        patient_fname = request.POST.get('patient_fname')
+        patient_lname = request.POST.get('patient_lname')
         phone_number = request.POST.get('phone_number')
         appointment_date = request.POST.get('appointment_date')
         notes = request.POST.get('notes')
         Appointment.objects.create(
-            patient_name=patient_name,
+            patient_fname=patient_fname,
+            patient_lname=patient_lname,
             phone_number=phone_number,
             appointment_date=appointment_date,
             notes=notes

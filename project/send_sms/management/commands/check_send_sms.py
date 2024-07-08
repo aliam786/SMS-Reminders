@@ -39,7 +39,7 @@ class Command(BaseCommand):
             client = Client(account_sid, auth_token, http_client=proxy_client)
 
             message = client.messages.create(
-                body=f"Mpore Clinic: Hello {appointment.patient_name}, this is a reminder for your appointment on {appointment.appointment_date}" + (". " + appointment.notes if appointment.notes else "."),
+                body=f"Mpore Clinic: Hello {appointment.patient_fname.strip()} {appointment.patient_lname.strip()}, this is a reminder for your appointment on {appointment.appointment_date}" + (". " + appointment.notes if appointment.notes else "."),
                 from_='+12568576097',  # Your Twilio number
                 to="+" + appointment.phone_number  # Appointment model has a field for phone number
             )

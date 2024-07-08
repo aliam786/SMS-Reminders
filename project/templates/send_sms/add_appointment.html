@@ -1,23 +1,42 @@
-
 <!--templates/send_sms/add_appointment.html-->
 
 {% extends "base.html" %}
 
 {% block title %}Add Appointment{% endblock %}
-
+<!--put the below form into a card, with fields spanning the width of the card. add appt should be left justified, and the field labels should be small and above the fields themselves. use Bootstrap-->
 {% block content %}
-<h1>Add Appointment</h1>
-<form method="POST">
-    {% csrf_token %}
-    <label for="patient_name">Patient Name:</label>
-    <input type="text" name="patient_name" id="patient_name" required><br>
-    <label for="phone_number">Phone Number:</label>
-    <input type="text" name="phone_number" id="phone_number" required><br>
-    <label for="appointment_date">Appointment Date:</label>
-    <input type="datetime-local" name="appointment_date" id="appointment_date" required><br>
-    <label for="notes">Notes:</label>
-    <textarea name="notes" id="notes"></textarea><br>
-    <button type="submit">Add Appointment</button>
-</form>
-<a href="{% url 'appointment_list' %}">Back to Appointment List</a>
+ <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Add Appointment</h5> 
+        <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="patient_fname">Patient First Name:</label>
+                        <input type="text" name="patient_fname" id="patient_fname" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="patient_lname">Patient Last Name:</label>
+                        <input type="text" name="patient_lname" id="patient_lname" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" name="phone_number" id="phone_number" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="appointment_date">Appointment Date:</label>
+                        <input type="datetime-local" name="appointment_date" id="appointment_date" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label for="notes">Notes:</label>
+                        <textarea name="notes" id="notes" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Appointment</button>
+        </form>
+        <a href="{% url 'appointment_list' %}" class="btn btn-link">Back to Appointment List</a>
+    </div>
+</div>
 {% endblock %}
