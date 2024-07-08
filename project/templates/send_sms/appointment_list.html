@@ -1,0 +1,46 @@
+<!--templates/send_sms/appointment_list.html-->
+
+{% extends "base.html" %}
+<!--put the data form into a light grey card, with data being clear and readable. appt list should be left justified. use Bootstrap-->
+{% block content %}
+<div class="card bg-light">
+    <div class="card-body">
+        <h2>Appointment List</h2>
+        {% if appointments %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>Patient Name</strong>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Appointment Date</strong>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Phone Number</strong>
+                        </div>
+                    </div>
+                </li>
+                {% for appointment in appointments %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ appointment.patient_fname }} {{ appointment.patient_lname }}
+                            </div>
+                            <div class="col-md-4">
+                                <span class="text-muted">{{ appointment.appointment_date }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="text-muted">{{ appointment.phone_number }}</span>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments available.</p>
+        {% endif %}
+        <a href="{% url 'add_appointment' %}" class="btn btn-primary">Add Appointment</a>
+    </div>
+</div>
+{% endblock %}
